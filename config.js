@@ -1,7 +1,8 @@
 var config = {};
 
 config.db = {};
-config.webhost = 'http://localhost:3000/';
+config.port = 3001
+config.webhost = 'http://localhost:' + config.port + '/';
 
 config.db.host = 'localhost';
 config.db.name = 'url_shortener';

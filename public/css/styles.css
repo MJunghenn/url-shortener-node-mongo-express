@@ -5,13 +5,13 @@
 html,
 body {
   height: 100%;
-  background-color: #4791D2;
+  background-color: white;
 }
 
 body {
-  color: #fff;
+  color: #3498db;
   text-align: center;
-  font-family: 'Raleway', sans-serif;
+  font-family: Ubuntu, sans-serif;
 }
 
 .btn-shorten {

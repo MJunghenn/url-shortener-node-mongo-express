@@ -25,7 +25,7 @@ app.post('/api/shorten', function(req, res){
   var shortUrl = '';
 
   // check if url already exists in database
-  Url.findOne({long_url: longUrl}, function (err, doc){
+  Url.findOne({long_url: longUrl}, function (err, doc) {
     if (doc){
       shortUrl = config.webhost + base58.encode(doc._id);
 
@@ -70,6 +70,6 @@ app.get('/:encoded_id', function(req, res){
 
 });
 
-var server = app.listen(3000, function(){
+var server = app.listen(config.port, function(){
   console.log('Server listening on port 3000');
 });

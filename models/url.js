@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+var _ = require('underscore');
 
 var CounterSchema = Schema({
     _id: {type: String, required: true},
@@ -15,13 +16,19 @@ var urlSchema = new Schema({
   created_at: Date
 });
 
-urlSchema.pre('save', function(next){
+urlSchema.pre('save', function(next) {
   var doc = this;
+  
   counter.findByIdAndUpdate({_id: 'url_count'}, {$inc: {seq: 1} }, function(error, counter) {
+    
       if (error)
           return next(error);
-      doc.created_at = new Date();
-      doc._id = counter.seq;
+          
+      if(!_.isNull(counter)) {
+        
+        doc.created_at = new Date();
+        doc._id = counter.seq;
+      }
       next();
   });
 });
